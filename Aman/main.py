@@ -20,7 +20,12 @@ def possibleStates(fen):
     return fenList
 
 def eval_centerControl(board):
-    ''' Evaluation function to return score for centre sqaure control'''
+    
+    ''' Evaluation function to return score for centre square control
+        Return 1 if one out of four centre squares are controlled/attacked
+        Return 2 if two out of four centre squares are controlled/attacked
+        ...
+    '''
     centerSquares = [chess.E4, chess.E5, chess.D4, chess.D5]
     score = 0
 
