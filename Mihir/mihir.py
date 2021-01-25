@@ -42,11 +42,17 @@ def materialcount(fen):
     black_score = black_mat[0]*1 + black_mat[1]*3 + black_mat[2]*3 + black_mat[3]*5 + black_mat[4]*9
     total_score = white_score - black_score
 
-    print(f'Material imbalance = {total_score}')
+    print(f'Material imbalance : {total_score}')
 
     return total_score
 
 materialcount(fenn)
+
+
+def squares_control(fen):
+    curBoard = chess.Board(f'{fen}')
+    chess.SQUARE_NAMES
+
 
 
     
