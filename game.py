@@ -18,11 +18,15 @@ while(1):
         # print(eval_centerControl(i), materialcount(i))
         # eval_centerControl(i)
         score = eval_centerControl(i) + materialcount(i)
-        print (score)
+        # print (score)
+        
         if score >= maxScore:
+            maxScore = score
             nextFen = i
+            # print(chess.Board(nextFen))
+            # print(f'maxscore :{maxScore} score :{score}')
 
-   
+    
     initialBoard = chess.Board(nextFen)
     print()
     print(initialBoard, "\n")
