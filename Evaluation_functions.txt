@@ -1,0 +1,11 @@
+EVALUIATION FUNCTIONS:
+
+1) material Score 
+
+2) Center square control 
+
+3) Check 
+
+4) maximum square control 
+
+5) 
