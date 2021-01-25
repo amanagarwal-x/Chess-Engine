@@ -18,10 +18,6 @@ while(1):
         # print(eval_centerControl(i), materialcount(i))
         # eval_centerControl(i)
         score = eval_centerControl(i) + materialcount(i)
-<<<<<<< HEAD
-        # print (score)
-=======
->>>>>>> 19ae2bb8da368df552aa9a87b7a4a8643005b255
         
         if score >= maxScore:
             maxScore = score
