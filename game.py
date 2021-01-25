@@ -18,7 +18,10 @@ while(1):
         # print(eval_centerControl(i), materialcount(i))
         # eval_centerControl(i)
         score = eval_centerControl(i) + materialcount(i)
+<<<<<<< HEAD
         # print (score)
+=======
+>>>>>>> 19ae2bb8da368df552aa9a87b7a4a8643005b255
         
         if score >= maxScore:
             maxScore = score
@@ -28,14 +31,14 @@ while(1):
 
     
     initialBoard = chess.Board(nextFen)
-    print()
-    print(initialBoard, "\n")
+    # print()
+    # print(initialBoard, "\n")
 
-    print("Possible Moves: ", initialBoard.legal_moves)
+    # print("Possible Moves: ", initialBoard.legal_moves)
     blackMove = input("Enter your move: ")
-    initialBoard.push_san(blackMove)
-    print()
-    print(initialBoard, "\n")
+    # initialBoard.push_san(blackMove)
+    # print()
+    # print(initialBoard, "\n")
 
     
 
