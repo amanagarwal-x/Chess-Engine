@@ -14,13 +14,13 @@ def possibleStates(fen):
     for i in legalMoves:
         tempBoard = chess.Board(fen)
         tempBoard.push(i)
-        print (tempBoard, "\n")                     #comment to avoid printing
+        # print (tempBoard, "\n")                     #comment to avoid printing
         fenList.append(tempBoard.fen())
 
     return fenList
 
 def eval_centerControl(board):
-    
+
     ''' Evaluation function to return score for centre square control
         Return 1 if one out of four centre squares are controlled/attacked
         Return 2 if two out of four centre squares are controlled/attacked
@@ -36,17 +36,17 @@ def eval_centerControl(board):
 
 
 #driver function
-def main(): 
-    initialBoard = chess.Board() 
+# def main(): 
+#     initialBoard = chess.Board() 
 
-    print()
-    print(initialBoard, "\n")
+#     print()
+#     print(initialBoard, "\n")
 
-    possibleStates(initialBoard.fen())
-    print(initialBoard.push_san("e4"))
-    print(eval_centerControl(initialBoard))
+#     possibleStates(initialBoard.fen())
+#     print(initialBoard.push_san("e4"))
+#     print(eval_centerControl(initialBoard))
 
-main()
+# main()
 
 
 
