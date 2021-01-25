@@ -1,8 +1,12 @@
 import chess
 import numpy as np
 
-# This function takes a board's fen as input and returns a python list of fens(of boards of all possible next moves)
+
 def possibleStates(fen):
+    ''' This function takes a board's fen as input
+        Calculates all legal moves, and calculates fen for boards of all these moves
+        Returns a list of these fens
+    '''
     fenList = []
     legalMoves = chess.Board(fen).legal_moves
     tempBoard = chess.Board(fen) 
@@ -15,6 +19,17 @@ def possibleStates(fen):
 
     return fenList
 
+def eval_centerControl(board):
+    ''' Evaluation function to return score for centre sqaure control'''
+    centerSquares = [chess.E4, chess.E5, chess.D4, chess.D5]
+    score = 0
+
+    for i in centerSquares:
+        score = score + board.is_attacked_by(chess.WHITE, i)
+
+    return score
+
+
 #driver function
 def main(): 
     initialBoard = chess.Board() 
@@ -23,6 +38,8 @@ def main():
     print(initialBoard, "\n")
 
     possibleStates(initialBoard.fen())
+    print(initialBoard.push_san("e4"))
+    print(eval_centerControl(initialBoard))
 
 main()
 
