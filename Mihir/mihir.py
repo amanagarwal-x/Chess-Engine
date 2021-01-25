@@ -1,6 +1,7 @@
 import chess
 
 board2 = chess.Board()
+fenn = 'rnb1kbnr/ppp1pp1p/6p1/3N4/8/8/PPPP1PPP/R1BQKBNR b KQkq - 0 4' 
 
 def materialcount(fen):
 
@@ -26,13 +27,13 @@ def materialcount(fen):
     black_mat = []
 
     for i in range(1,7):
-        sqset = board.pieces(piece_type = i, color = True)
+        sqset = board.pieces(piece_type = i, color = True) #color = True (white) piece_type =(1,7) [pawn, knight, bishop, rook, queen, king]
         cnt = 0
         for square in sqset:
             cnt+=1
         white_mat.append(cnt)
     for i in range(1,7):
-        sqset = board.pieces(piece_type = i, color = False)
+        sqset = board.pieces(piece_type = i, color = False) #color = False (black) piece_type =(1,7) [pawn, knight, bishop, rook, queen, king]
         cnt = 0
         for square in sqset:
             cnt+=1
@@ -44,6 +45,8 @@ def materialcount(fen):
     print(f'Material imbalance = {total_score}')
 
     return total_score
+
+materialcount(fenn)
 
 
     
