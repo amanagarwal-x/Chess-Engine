@@ -36,17 +36,17 @@ def eval_centerControl(board):
 
 
 #driver function
-# def main(): 
-#     initialBoard = chess.Board() 
+def driver(): 
+    initialBoard = chess.Board() 
 
-#     print()
-#     print(initialBoard, "\n")
+    print()
+    print(initialBoard, "\n")
 
-#     possibleStates(initialBoard.fen())
-#     print(initialBoard.push_san("e4"))
-#     print(eval_centerControl(initialBoard))
+    possibleStates(initialBoard.fen())
+    print(initialBoard.push_san("e4"))
+    print(eval_centerControl(initialBoard))
 
-# main()
+# driver()
 
 
 
