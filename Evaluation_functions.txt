@@ -1,4 +1,4 @@
-EVALUIATION FUNCTIONS:
+EVALUATION FUNCTIONS:
 
 1) material Score 
 
@@ -8,4 +8,6 @@ EVALUIATION FUNCTIONS:
 
 4) maximum square control 
 
-5) 
+5) eval function should also consider moves gaining tempo
+
+6) kings safety 
