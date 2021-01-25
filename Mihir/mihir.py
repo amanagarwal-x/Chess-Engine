@@ -1,6 +1,6 @@
 import chess
-board = chess.Board()
 
+board2 = chess.Board()
 
 def materialcount(fen):
 
@@ -44,7 +44,8 @@ def materialcount(fen):
     print(f'Material imbalance = {total_score}')
 
     return total_score
-    
 
+
+    
 
 
