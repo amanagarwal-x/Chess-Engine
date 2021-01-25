@@ -1,6 +1,7 @@
 import chess
 import numpy as np
 
+# This function takes a board's fen as input and returns a python list of fens(of boards of all possible next moves)
 def possibleStates(fen):
     fenList = []
     legalMoves = chess.Board(fen).legal_moves
@@ -14,6 +15,7 @@ def possibleStates(fen):
 
     return fenList
 
+#driver function
 def main(): 
     initialBoard = chess.Board() 
 
