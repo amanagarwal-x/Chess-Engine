@@ -57,12 +57,12 @@ so it doesnt count number of attackers, it just sees if it is being controlled b
 
 
 print(f'\nset of atttackers E3 : \n{newboard.attackers(color=True,square=chess.E3)}\n')
-
-
 sqatte3 = newboard.attackers(color=True,square=chess.E3)
+print(f'\ncount of attackers {countsqset(sqatte3)}\n')
 
-
-print(f'count of attackers {countsqset(sqatte3)}')
+print(f'\nset of atttackers D2 : \n{newboard.attackers(color=True,square=chess.D2)}\n')
+sqattd2 = newboard.attackers(color=True,square=chess.D2)
+print(f'\ncount of attackers {countsqset(sqattd2)}\n')
 
 
 # attf4 = newboard.is_attacked_by(chess.WHITE,chess.F4)
