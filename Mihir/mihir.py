@@ -49,9 +49,20 @@ def materialcount(fen):
 # materialcount(fenn)
 
 
-def squares_control(fen):
-    curBoard = chess.Board(f'{fen}')
-    chess.SQUARE_NAMES
+def countsqset(sqset):
+    """
+    
+     takes input as sqset, returns number of 1s in it 
+     made it to count no of pieces attacking a particular square as .attack() returns a squareset 
+     
+    """
+    countt=0
+    for sq in sqset:
+        countt+=1
+    return countt
+
+
+
 
 
 
