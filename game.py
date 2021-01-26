@@ -27,14 +27,14 @@ while(1):
 
     
     initialBoard = chess.Board(nextFen)
-    # print()
-    # print(initialBoard, "\n")
+    print()
+    print(initialBoard, "\n")
 
     # print("Possible Moves: ", initialBoard.legal_moves)
     blackMove = input("Enter your move: ")
-    # initialBoard.push_san(blackMove)
-    # print()
-    # print(initialBoard, "\n")
+    initialBoard.push_san(blackMove)
+    print()
+    print(initialBoard, "\n")
 
     
 
