@@ -31,9 +31,10 @@ def game():
             try:
                 print("Possible Moves: ", initialBoard.legal_moves)
                 blackMove = input("Enter your move: ")
+
                 if blackMove == 'q':                                                    # Press X to quit game
                     return
-                # elif (blackMove in initialBoard.legal_moves):
+
                 initialBoard.push_san(blackMove)
                 print()
                 print(initialBoard, "\n")
@@ -41,8 +42,5 @@ def game():
             except:
                 print("\n\nINVALID MOVE\n\n")
 
-        # initialBoard.push_san(blackMove)
-        # print()
-        # print(initialBoard, "\n")
    
 game()
