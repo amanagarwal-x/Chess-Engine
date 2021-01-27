@@ -4,7 +4,7 @@ from Mihir.mihir import *
 import chess
 
 newboard = chess.Board("8/8/8/8/8/8/3P4/5N2 w - - 0 1") 
-print(newboard) 
+# print(newboard) 
 
 
 
@@ -56,13 +56,13 @@ so it doesnt count number of attackers, it just sees if it is being controlled b
 """
 
 
-print(f'\nset of atttackers E3 : \n{newboard.attackers(color=True,square=chess.E3)}\n')
-sqatte3 = newboard.attackers(color=True,square=chess.E3)
-print(f'\ncount of attackers {countsqset(sqatte3)}\n')
+# print(f'\nset of atttackers E3 : \n{newboard.attackers(color=True,square=chess.E3)}\n')
+# sqatte3 = newboard.attackers(color=True,square=chess.E3)
+# print(f'\ncount of attackers {countsqset(sqatte3)}\n')
 
-print(f'\nset of atttackers D2 : \n{newboard.attackers(color=True,square=chess.D2)}\n')
-sqattd2 = newboard.attackers(color=True,square=chess.D2)
-print(f'\ncount of attackers {countsqset(sqattd2)}\n')
+# print(f'\nset of atttackers D2 : \n{newboard.attackers(color=True,square=chess.D2)}\n')
+# sqattd2 = newboard.attackers(color=True,square=chess.D2)
+# print(f'\ncount of attackers {countsqset(sqattd2)}\n')
 
 
 # attf4 = newboard.is_attacked_by(chess.WHITE,chess.F4)
@@ -74,3 +74,31 @@ print(f'\ncount of attackers {countsqset(sqattd2)}\n')
 # atte4 = newboard.is_attacked_by(chess.WHITE,chess.E4) # returns boolean -> if square is attacked by that piece
 # atte3 = newboard.is_attacked_by(chess.WHITE,chess.E3)
 # print(atte3)
+
+"""
+    ek colour, pure board me, kitne squares control kar rha
+
+    common square rehge, check no of attackers from both side
+
+    ek funct
+
+    sqw, sqb
+    [a1-h8], 
+"""
+
+
+"""
+trying dictionary
+dict1={}
+i=0
+for square in upper_square:
+    dict1[square]=i
+    i+=1
+print(dict1)
+"""
+
+
+
+
+
+
