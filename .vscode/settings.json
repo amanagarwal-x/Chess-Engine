@@ -1,5 +1,9 @@
 {
     "python.linting.enabled": false,
-    "python.analysis.extraPaths": ["./Mihir", "./Aman"]
+    "python.analysis.extraPaths": [
+        "./Mihir",
+        "./Aman"
+    ],
+    "typescript.suggest.paths": false 
     
 }
