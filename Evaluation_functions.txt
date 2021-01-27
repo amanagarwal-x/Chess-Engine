@@ -1,13 +1,15 @@
 EVALUATION FUNCTIONS:
 
-1) material Score 
+1) material Score ✔
 
-2) Center square control 
+2) Center square control ✔
 
 3) Check 
 
 4) maximum square control 
 
-5) eval function should also consider moves gaining tempo
+5) eval function should also consider moves gaining tempo #unsopported piece attack
 
 6) kings safety 
+
+7) 
