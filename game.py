@@ -32,7 +32,7 @@ def game():
                 print("Possible Moves: ", initialBoard.legal_moves)
                 blackMove = input("Enter your move: ")
 
-                if blackMove == 'q':                                                    # Press X to quit game
+                if blackMove == 'q':                                                    # Press q to quit game
                     return
 
                 initialBoard.push_san(blackMove)
