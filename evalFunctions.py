@@ -26,7 +26,7 @@ def eval_kingCheck(fen):
     return chess.Board(fen).is_check()
 
 #    
-def materialcount(fen):
+def eval_materialCount(fen):
 
     '''
     takes fen as input, and returns(integer) material imbalance present in the game
@@ -66,3 +66,7 @@ def materialcount(fen):
     total_score = white_score - black_score
 
     return total_score
+
+#
+def evaluate(fen):
+    return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen))

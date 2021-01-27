@@ -1,6 +1,5 @@
 import chess
 
-# from main import *
 from Aman.main import *
 from Mihir.mihir import *
 from evalFunctions import *
@@ -17,7 +16,7 @@ def game():
         maxScore = float('-inf')
         nextFen = ""
         for i in possibleStates(initialBoard.fen()): 
-            score = eval_centerControl(i) + materialcount(i) + eval_kingCheck(i)
+            score = eval_centerControl(i) + eval_materialCount(i) + eval_kingCheck(i)
             if score >= maxScore:
                 maxScore = score
                 nextFen = i
@@ -44,3 +43,23 @@ def game():
 
    
 game()
+
+
+
+
+#TEST AREA
+
+# def test():
+#     initialBoard = chess.Board() 
+#     print()
+#     print(initialBoard, "\n")
+#     print("Computer's Move:")
+
+#     initialBoard.push_san("e4")
+#     print()
+#     print(initialBoard, "\n")
+#     initialBoard.pop()
+#     print()
+#     print(initialBoard, "\n")
+
+# test()    
