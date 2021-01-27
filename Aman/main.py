@@ -19,36 +19,23 @@ def possibleStates(fen):
 
     return fenList
 
-def eval_centerControl(fen):
-        
-    ''' Evaluation function to return score for centre square control
-        Return 1 if one out of four centre squares are controlled/attacked
-        Return 2 if two out of four centre squares are controlled/attacked
-        ...
-    '''
-    centerSquares = [chess.E4, chess.E5, chess.D4, chess.D5]
-    score = 0
-
-    for i in centerSquares:
-        score = score + chess.Board(fen).is_attacked_by(chess.WHITE, i)
-     
-    # if score > 1:
-    #     print(chess.Board(fen), '\n')
-    return score
 
 
-#driver function
-def driver(): 
-    initialBoard = chess.Board() 
 
-    print()
-    print(initialBoard, "\n")
 
-    possibleStates(initialBoard.fen())
-    print(initialBoard.push_san("e4"))
-    print(eval_centerControl(initialBoard.fen()))
 
-# driver()
+# #driver function
+# def driver(): 
+#     initialBoard = chess.Board() 
+
+#     print()
+#     print(initialBoard, "\n")
+
+#     possibleStates(initialBoard.fen())
+#     print(initialBoard.push_san("e4"))
+#     print(eval_centerControl(initialBoard.fen()))
+
+# # driver()
 
 
 

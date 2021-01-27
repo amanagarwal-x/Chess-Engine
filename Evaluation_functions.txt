@@ -4,7 +4,7 @@ EVALUATION FUNCTIONS:
 
 2) Center square control ✔
 
-3) Check 
+3) Check ✔
 
 4) maximum square control 
 
