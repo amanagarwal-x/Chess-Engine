@@ -50,15 +50,17 @@ def count_attack(fen):
 
     print(f'white controls {cntwhite} squares and black controls {cntblack} squares')
     diff = cntwhite - cntblack
+    if(diff==0):
+        return diff
 
     '''
     max value of difference = 63, min value -63 
     ''' 
-    scaled_diff = (diff +63)/(126)
-
-    return scaled_diff*(abs(diff)/diff)
+    if(diff!=0):
+        scaled_diff = (diff +63)/(126)
+        return scaled_diff*(abs(diff)/diff)
 
 
 # print(count_attack('3k3r/8/8/8/8/8/8/R2K4 w - - 0 1'))
-print(count_attack('8/8/8/3q4/8/8/7P/8 w - - 0 1'))
+# print(count_attack('8/8/8/3q4/8/8/7P/8 w - - 0 1'))
 
