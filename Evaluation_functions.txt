@@ -12,4 +12,34 @@ EVALUATION FUNCTIONS:
 
 6) kings safety 
 
-7) 
+7) score modification based on pawn structure - isolated pawns, doubled pawns, passed pawns
+
+8) some tactical ideas - forks, pins, 
+
+9) some other key features while analysing a position - connecting rooks, rooks on seventh rank, connectivity of peices, king's distance to center
+
+10) piece position : modification to square control is that piece can be better at center even if it controls 2-3 less square than before but is placed in central squares
+
+11) Rooks belong to open files
+
+connectivity: 
+The connectivity is the measure of connectedness between the pieces of
+a side. Moreover, it states in what amount the pieces of a side(except
+for the king) are defended by other pieces. Thus, a piece has no connectivity if it is not defended by any piece, has low connectivity if it is
+covered by, for instance, one other piece and has high connectivity if it
+is covered by many other pieces.
+It differs on the type of position if it is better to have high connectivity or low connectivity. It also differs on the type of player, positional
+players normally play with high connectivity and tacticians will prefer
+to play positions with low connectivity.
+
+Transposition table
+Dynamic depth
+
+
+Quiescence Search:
+It is useful to use quiescence search to be able to make a good estimate
+of the evaluation value for a position. A position is only evaluated if
+there are no direct threats. Otherwise, the search-depth for a branch
+in the search tree is increased. Positions in which e.g., a piece can be
+captured or a side is in check are searched deeper to produce a more
+trustworthy evaluation score.
