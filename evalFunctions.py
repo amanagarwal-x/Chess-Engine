@@ -61,8 +61,8 @@ def eval_materialCount(fen):
         for square in sqset:
             cnt+=1
         black_mat.append(cnt)
-    white_score = white_mat[0]*1 + white_mat[1]*3 + white_mat[2]*3 + white_mat[3]*5 + white_mat[4]*9
-    black_score = black_mat[0]*1 + black_mat[1]*3 + black_mat[2]*3 + black_mat[3]*5 + black_mat[4]*9
+    white_score = white_mat[0]*1 + white_mat[1]*3.2 + white_mat[2]*3.3 + white_mat[3]*5 + white_mat[4]*9
+    black_score = black_mat[0]*1 + black_mat[1]*3.2 + black_mat[2]*3.3 + black_mat[3]*5 + black_mat[4]*9
     total_score = white_score - black_score
 
     return total_score
