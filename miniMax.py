@@ -8,7 +8,6 @@ minimumScore = -1000^3
 maxDepth = 2
 
 
-board = chess.Board()
 
 def miniMax(board, depth, isMax):
     score = evaluate(board.fen())
@@ -47,9 +46,46 @@ def findBestMove(board):
         board.pop()            
     return bestMove
 
-board.push_san(str(findBestMove(board)))
-print()
-print(board, "\n")
+
+
+def game():
+    board = chess.Board() 
+    print()
+    print(board, "\n")
+    while(1):  
+        print("Computer's Move:")
+        board.push_san(str(findBestMove(board)))
+        print()
+        print(board, "\n")
+
+        while(1):
+            try:
+                print("Possible Moves: ", board.legal_moves)
+                blackMove = input("Enter your move: ")
+
+                if blackMove == 'q':                                                    # Press q to quit game
+                    return
+
+                board.push_san(blackMove)
+                print()
+                print(board, "\n")
+                break
+            except:
+                print("\n\nINVALID MOVE\n\n")
+
+game()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
