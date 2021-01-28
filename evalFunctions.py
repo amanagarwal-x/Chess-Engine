@@ -68,5 +68,49 @@ def eval_materialCount(fen):
     return total_score
 
 #
+
+def count_attack(fen):
+    '''
+    counts no of attackers of white - cntwhite
+    counts no of attackers of black - cntblack
+
+    returns the difference scaled down out of 1,  positive means good for ai, negative means bad for ai
+
+    '''
+
+    cur_pos = chess.Board(f'{fen}')
+    print(cur_pos)
+    i = 0
+    white_control = {}
+    black_control = {}
+
+    for sq in upper_square:
+        white_control[upper_square_string[i]] = countsqset(
+            cur_pos.attackers(color=True, square=sq))
+        black_control[upper_square_string[i]] = countsqset(
+            cur_pos.attackers(color=False, square=sq))
+
+    # print(f'\nList of control of squares for white : \n{white_control}')
+    # print(f'\nList of control of squares for black : \n{black_control}')
+
+    cntwhite=0
+    cntblack=0
+    for num in white_control.values():
+        cntwhite+=num
+    for num in black_control.values():
+        cntblack+=num
+    cnt_outofone = (cntwhite - 1)/26 #scaled out value for sole control of white over the board
+
+    # print(f'white controls {cntwhite} squares and black controls {cntblack} squares')
+    diff = cntwhite - cntblack
+
+
+    #max value of difference = 63, min value -63 
+
+    scaled_diff = (diff + 63)/126
+
+    return scaled_diff*(abs(diff)/diff)
+
+#
 def evaluate(fen):
-    return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen))
+    return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + count_attack(fen))
