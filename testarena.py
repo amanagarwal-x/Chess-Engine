@@ -105,7 +105,7 @@ for i in newboard.legal_moves:
 # print(legal_moves)
 
 templist=[1,2,3,4]
-swap(templist[0],templist[1])
+# swap(templist[0],templist[1])
 print(templist)
 
 
