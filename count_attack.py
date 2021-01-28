@@ -1,5 +1,5 @@
 import chess
-from Mihir.mihir import *
+from Mihir.mihirr import *
 from Aman.main import *
 
 upper_square = [chess.A1, chess.B1, chess.C1, chess.D1, chess.E1,

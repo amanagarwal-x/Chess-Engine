@@ -1,7 +1,7 @@
 import chess
 import math
 from Aman.main import *
-from Mihir.mihir import *
+from Mihir.mihirr import *
 from evalFunctions import *
 
 maximumScore = 1000^3

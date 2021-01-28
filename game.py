@@ -1,7 +1,7 @@
 import chess
 
 from Aman.main import *
-from Mihir.mihir import *
+from Mihir.mihirr import *
 from evalFunctions import *
 
 

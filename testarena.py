@@ -1,5 +1,5 @@
 from Aman.main import *
-from Mihir.mihir import *
+from Mihir.mihirr import *
 
 import chess
 
