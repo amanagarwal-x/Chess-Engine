@@ -1,5 +1,5 @@
 import chess
-
+from count_attack import *
 #
 def eval_centerControl(fen):
         
@@ -79,8 +79,7 @@ def count_attack(fen):
     '''
 
     cur_pos = chess.Board(f'{fen}')
-    print(cur_pos)
-    i = 0
+    # print(cur_pos)
     white_control = {}
     black_control = {}
 
@@ -103,7 +102,8 @@ def count_attack(fen):
 
     # print(f'white controls {cntwhite} squares and black controls {cntblack} squares')
     diff = cntwhite - cntblack
-
+    if(diff==0):
+        return diff
 
     #max value of difference = 63, min value -63 
 
