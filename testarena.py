@@ -3,7 +3,7 @@ from Mihir.mihir import *
 
 import chess
 
-newboard = chess.Board("8/8/8/8/8/8/3P4/5N2 w - - 0 1") 
+newboard = chess.Board() 
 # print(newboard) 
 
 
@@ -96,6 +96,17 @@ for square in upper_square:
     i+=1
 print(dict1)
 """
+
+newboard = chess.Board()
+legal_moves=[]
+print(newboard.legal_moves)
+for i in newboard.legal_moves:
+    print(i)
+# print(legal_moves)
+
+templist=[1,2,3,4]
+swap(templist[0],templist[1])
+print(templist)
 
 
 
