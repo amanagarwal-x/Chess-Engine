@@ -63,6 +63,12 @@ def game():
     print()
     print(board, "\n")
     while(1):  
+        if(board.is_checkmate()):
+            print('-----------------GAME OVER-----------------')
+            break
+        if(board.is_stalemate()):
+            print('-----------------STALEMATE-----------------')
+            break
         print("Computer's Move:")
         board.push_san(str(findBestMove(board)))
         print()
