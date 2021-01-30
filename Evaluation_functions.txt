@@ -43,3 +43,19 @@ there are no direct threats. Otherwise, the search-depth for a branch
 in the search tree is increased. Positions in which e.g., a piece can be
 captured or a side is in check are searched deeper to produce a more
 trustworthy evaluation score.
+
+
+
+some more tips - 
+1. score adjustment for forward pawns (+0.1 for each square the pawn is advanced)
+2. score adjustment for forward knights (+0.1 for each square the knight is advanced)
+3. penalize knights for on the side of the board
+4. score adjustment for bishop with open diagonal
+5. score adjustment for castled king, protected king in early and mid game
+6. score adjustment for open file for rooks
+7. score adjustment for strong pawn structure
+    7.a (-0.1) for doubled pawns, isolated pawns
+    7.b (-0.1) * no of pawn islands (if greater than 2)
+8. penalize if queen move when 3 minor piece are at backrank (unless necessary)
+9. penalize if a piece is blocking own central pawns(before 4th rank)
+10. penalize if moved same piece twice when not 2 or more piece are undeveloped
