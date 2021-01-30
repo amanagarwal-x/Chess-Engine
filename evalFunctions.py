@@ -69,7 +69,7 @@ def eval_materialCount(fen):
 
 #
 
-def count_attack(fen):
+def eval_countAttack(fen):
     '''
     counts no of attackers of white - cntwhite
     counts no of attackers of black - cntblack
@@ -82,12 +82,13 @@ def count_attack(fen):
     # print(cur_pos)
     white_control = {}
     black_control = {}
-
+    i=0
     for sq in upper_square:
         white_control[upper_square_string[i]] = countsqset(
             cur_pos.attackers(color=True, square=sq))
         black_control[upper_square_string[i]] = countsqset(
             cur_pos.attackers(color=False, square=sq))
+        i+=1
 
     # print(f'\nList of control of squares for white : \n{white_control}')
     # print(f'\nList of control of squares for black : \n{black_control}')
@@ -98,7 +99,7 @@ def count_attack(fen):
         cntwhite+=num
     for num in black_control.values():
         cntblack+=num
-    cnt_outofone = (cntwhite - 1)/26 #scaled out value for sole control of white over the board
+    # cnt_outofone = (cntwhite - 1)/26 #scaled out value for sole control of white over the board
 
     # print(f'white controls {cntwhite} squares and black controls {cntblack} squares')
     diff = cntwhite - cntblack
@@ -113,4 +114,15 @@ def count_attack(fen):
 
 #
 def evaluate(fen):
-    return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + count_attack(fen))
+    # return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
+    return (eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
+
+def debugscores(fen):
+    print(f'score of materialcount : {eval_materialCount(fen)}')
+    print(f'score of centercount : {eval_centerControl(fen)}')
+    print(f'score of kingcheck : {eval_kingCheck(fen)}')
+    print(f'score of squareControl : {eval_countAttack(fen)}')
+
+    print(f'----------------------------------------\n total score : {evaluate(fen)}')
+
+debugscores('rnbqk2r/pppp1ppp/5n2/4p3/1bB1P3/2N5/PPPP1PPP/R1BQK1NR w KQkq - 4 4')
