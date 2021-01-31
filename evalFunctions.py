@@ -1,5 +1,6 @@
 import chess
 from count_attack import *
+from utility_funcs import *
 #
 def eval_centerControl(fen):
         
@@ -112,6 +113,11 @@ def eval_countAttack(fen):
 
     return scaled_diff*(abs(diff)/diff)
 
+def eval_PiecePosition(fen):
+    cur_board = board(f'{fen}')
+    white_pieces,black_pieces = piece_location(cur_board)
+    print(f'white dict \n{white_pieces}\nblack dict \n{black_pieces}\n')
+    #TODO : Positions of all pawns,rooks,bishops,knights is not added in map
 #
 def evaluate(fen):
     # return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
@@ -125,4 +131,5 @@ def debugscores(fen):
 
     print(f'----------------------------------------\n total score : {evaluate(fen)}')
 
-debugscores('rnbqk2r/pppp1ppp/5n2/4p3/1bB1P3/2N5/PPPP1PPP/R1BQK1NR w KQkq - 4 4')
+# debugscores('rnbqk2r/pppp1ppp/5n2/4p3/1bB1P3/2N5/PPPP1PPP/R1BQK1NR w KQkq - 4 4')
+
