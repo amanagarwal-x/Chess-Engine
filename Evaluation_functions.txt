@@ -44,7 +44,9 @@ in the search tree is increased. Positions in which e.g., a piece can be
 captured or a side is in check are searched deeper to produce a more
 trustworthy evaluation score.
 
-
+//TODO
+1. Make a function which takes moves like a2a4 b1b3 etc and converts to proper notation like e4 Bxf2+ Nxd2 Nbe4 Qf1# etc
+2. Make a function which returns dictionary of white pieces and its location and similarly for black pieces
 
 some more tips - 
 1. score adjustment for forward pawns (+0.1 for each square the pawn is advanced)
