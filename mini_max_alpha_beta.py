@@ -59,22 +59,22 @@ def findBestMove(board):
 
 
 def game():
-    board = chess.Board() 
+    board = chess.Board('r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/2N2Q2/PPPP1PPP/R1B1K1NR w KQkq - 0 1') 
     print()
     print(board, "\n")
     while(1):  
-        if(board.is_checkmate()):
-            print('-----------------GAME OVER-----------------')
-            break
-        if(board.is_stalemate()):
-            print('-----------------STALEMATE-----------------')
-            break
         print("Computer's Move:")
         board.push_san(str(findBestMove(board)))
         print()
         print(board, "\n")
 
         while(1):
+            if(board.is_checkmate()):
+                print('-----------------GAME OVER-----------------')
+                break
+            if(board.is_stalemate()):
+                print('-----------------STALEMATE-----------------')
+                break
             try:
                 print("Possible Moves: ", board.legal_moves)
                 blackMove = input("Enter your move: ")
