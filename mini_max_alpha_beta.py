@@ -3,15 +3,13 @@ import math
 from Aman.main import *
 from Mihir.mihirr import *
 from evalFunctions import *
-
+from utility_funcs import *
 maximumScore = 1000^3
 minimumScore = -1000^3
 maxDepth = 3
 
 alppha = -math.inf
 betta = math.inf
-
-
 def miniMax(board, depth,alpha,beta, isMax):
     score = evaluate(board.fen())
 
@@ -20,7 +18,8 @@ def miniMax(board, depth,alpha,beta, isMax):
 
     if isMax:
         best = -1000
-        for i in board.legal_moves:
+        SortedList = LegalSort(board)
+        for i in SortedList:
             board.push_san(str(i))
             best = max( best, miniMax(board, depth+1,alpha,beta, not isMax))
             board.pop()
@@ -32,7 +31,8 @@ def miniMax(board, depth,alpha,beta, isMax):
 
     else:
         best = 1000
-        for i in board.legal_moves:
+        SortedList = LegalSort(board)
+        for i in SortedList:
             board.push_san(str(i))
             best = min( best, miniMax(board, depth+1,alpha,beta, not isMax))
             board.pop()
@@ -45,7 +45,8 @@ def findBestMove(board):
     bestVal = -1000
     moveVal = 0
     bestMove = ""
-    for i in board.legal_moves:
+    SortedList = LegalSort(board)
+    for i in SortedList:
         board.push_san(str(i))
         moveVal = miniMax(board, 0,alppha,betta, False)
     
@@ -59,7 +60,7 @@ def findBestMove(board):
 
 
 def game():
-    board = chess.Board('r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/2N2Q2/PPPP1PPP/R1B1K1NR w KQkq - 0 1') 
+    board = chess.Board() 
     print()
     print(board, "\n")
     while(1):  
