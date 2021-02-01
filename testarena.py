@@ -1,9 +1,9 @@
 from Aman.main import *
-from Mihir.mihir import *
+from Mihir.mihirr import *
 
 import chess
 
-newboard = chess.Board("8/8/8/8/8/8/3P4/5N2 w - - 0 1") 
+newboard = chess.Board() 
 # print(newboard) 
 
 
@@ -88,16 +88,20 @@ so it doesnt count number of attackers, it just sees if it is being controlled b
 
 
 """
-trying dictionary
+# trying dictionary
 dict1={}
 i=0
 for square in upper_square:
     dict1[square]=i
     i+=1
 print(dict1)
+
+fruits={'apple':3,'orange':4,'banana':5,'chikoo':7}
+for fruit in fruits:
+    # print(f'value is {fruit.value()}')
+    print(f'printing iterator {fruit}')
+    print(f'value is {fruits[fruit]}')
 """
-
-
 
 
 

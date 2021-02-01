@@ -1,5 +1,6 @@
 import chess
-
+from count_attack import *
+from utility_funcs import *
 #
 def eval_centerControl(fen):
         
@@ -61,12 +62,74 @@ def eval_materialCount(fen):
         for square in sqset:
             cnt+=1
         black_mat.append(cnt)
-    white_score = white_mat[0]*1 + white_mat[1]*3 + white_mat[2]*3 + white_mat[3]*5 + white_mat[4]*9
-    black_score = black_mat[0]*1 + black_mat[1]*3 + black_mat[2]*3 + black_mat[3]*5 + black_mat[4]*9
+    white_score = white_mat[0]*1 + white_mat[1]*3.2 + white_mat[2]*3.3 + white_mat[3]*5 + white_mat[4]*9
+    black_score = black_mat[0]*1 + black_mat[1]*3.2 + black_mat[2]*3.3 + black_mat[3]*5 + black_mat[4]*9
     total_score = white_score - black_score
 
     return total_score
 
 #
+
+def eval_countAttack(fen):
+    '''
+    counts no of attackers of white - cntwhite
+    counts no of attackers of black - cntblack
+
+    returns the difference scaled down out of 1,  positive means good for ai, negative means bad for ai
+
+    '''
+
+    cur_pos = chess.Board(f'{fen}')
+    # print(cur_pos)
+    white_control = {}
+    black_control = {}
+    i=0
+    for sq in upper_square:
+        white_control[upper_square_string[i]] = countsqset(
+            cur_pos.attackers(color=True, square=sq))
+        black_control[upper_square_string[i]] = countsqset(
+            cur_pos.attackers(color=False, square=sq))
+        i+=1
+
+    # print(f'\nList of control of squares for white : \n{white_control}')
+    # print(f'\nList of control of squares for black : \n{black_control}')
+
+    cntwhite=0
+    cntblack=0
+    for num in white_control.values():
+        cntwhite+=num
+    for num in black_control.values():
+        cntblack+=num
+    # cnt_outofone = (cntwhite - 1)/26 #scaled out value for sole control of white over the board
+
+    # print(f'white controls {cntwhite} squares and black controls {cntblack} squares')
+    diff = cntwhite - cntblack
+    if(diff==0):
+        return diff
+
+    #max value of difference = 63, min value -63 
+
+    scaled_diff = (diff + 63)/126
+
+    return scaled_diff*(abs(diff)/diff)
+
+def eval_PiecePosition(fen):
+    cur_board = board(f'{fen}')
+    white_pieces,black_pieces = piece_location(cur_board)
+    print(f'white dict \n{white_pieces}\nblack dict \n{black_pieces}\n')
+    #TODO : Positions of all pawns,rooks,bishops,knights is not added in map
+#
 def evaluate(fen):
-    return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen))
+    # return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
+    return (eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
+
+def debugscores(fen):
+    print(f'score of materialcount : {eval_materialCount(fen)}')
+    print(f'score of centercount : {eval_centerControl(fen)}')
+    print(f'score of kingcheck : {eval_kingCheck(fen)}')
+    print(f'score of squareControl : {eval_countAttack(fen)}')
+
+    print(f'----------------------------------------\n total score : {evaluate(fen)}')
+
+# debugscores('rnbqk2r/pppp1ppp/5n2/4p3/1bB1P3/2N5/PPPP1PPP/R1BQK1NR w KQkq - 4 4')
+
