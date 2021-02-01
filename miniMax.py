@@ -5,7 +5,7 @@ from evalFunctions import *
 
 maximumScore = 1000^3
 minimumScore = -1000^3
-maxDepth = 2
+maxDepth = 3
 
 
 
