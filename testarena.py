@@ -1,6 +1,6 @@
 from Aman.main import *
 from Mihir.mihirr import *
-
+from utility_funcs import *
 import chess
 
 newboard = chess.Board() 
@@ -103,6 +103,12 @@ for fruit in fruits:
     print(f'value is {fruits[fruit]}')
 """
 
+def eval_PiecePosition(fen):
+    cur_board = chess.Board(f'{fen}')
+    white_pieces,black_pieces = piece_location(cur_board)
+    print(f'white dict \n{white_pieces}\nblack dict \n{black_pieces}\n')
 
+
+eval_PiecePosition('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
 
 
