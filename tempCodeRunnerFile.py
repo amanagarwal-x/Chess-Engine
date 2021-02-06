@@ -1,2 +1,1 @@
-print()
-print(board, "\n")
+te

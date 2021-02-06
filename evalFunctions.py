@@ -118,10 +118,18 @@ def eval_PiecePosition(fen):
     white_pieces,black_pieces = piece_location(cur_board)
     print(f'white dict \n{white_pieces}\nblack dict \n{black_pieces}\n')
     #TODO : Positions of all pawns,rooks,bishops,knights is not added in map
+
+#
+def eval_isCheckMate(fen):
+    board = chess.Board(fen)
+    if(board.is_checkmate() or board.is_stalemate()):
+        return 10^8
+    return 0    
+
 #
 def evaluate(fen):
     # return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
-    return (eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
+    return (eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen) + eval_isCheckMate(fen))
 
 def debugscores(fen):
     print(f'score of materialcount : {eval_materialCount(fen)}')
