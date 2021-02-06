@@ -18,8 +18,10 @@ def miniMax(board, depth,alpha,beta, isMax):
 
     if isMax:
         best = -1000
-        SortedList = LegalSort(board)
+        SortedList = fast_legal_sort(board)
         for i in SortedList:
+            # if '#' in i:
+            #     return i
             board.push_san(str(i))
             best = max( best, miniMax(board, depth+1,alpha,beta, not isMax))
             board.pop()
@@ -31,8 +33,10 @@ def miniMax(board, depth,alpha,beta, isMax):
 
     else:
         best = 1000
-        SortedList = LegalSort(board)
+        SortedList = fast_legal_sort(board)
         for i in SortedList:
+            # if '#' in i:
+            #     return i
             board.push_san(str(i))
             best = min( best, miniMax(board, depth+1,alpha,beta, not isMax))
             board.pop()
@@ -45,9 +49,12 @@ def findBestMove(board):
     bestVal = -1000
     moveVal = 0
     bestMove = ""
-    SortedList = LegalSort(board)
+    SortedList = fast_legal_sort(board)
     for i in SortedList:
+        # if '#' in i:
+        #     return i
         board.push_san(str(i))
+        
         moveVal = miniMax(board, 0,alppha,betta, False)
     
         if moveVal >= bestVal:
@@ -60,7 +67,7 @@ def findBestMove(board):
 
 
 def game():
-    board = chess.Board() 
+    board = chess.Board('3rk3/5p2/8/8/8/1B6/5Q2/K7 w - - 0 1') 
     print()
     print(board, "\n")
     while(1):  

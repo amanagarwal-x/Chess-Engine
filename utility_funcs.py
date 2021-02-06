@@ -35,6 +35,23 @@ def LegalSort(board):
     return SortedLegalMoves
 
 
+def fast_legal_sort(board):
+    move_set = set()
+    sannns="initial"
+    for move in board.legal_moves:
+        sannns = " ".join(board.san(move) for move in board.legal_moves)
+        move_set.add(str(sannns))
+    move_list = sannns.split(" ")
+    sorted_list=[]
+    # print(f'move set is {move_list} and len is {len(move_list)}')
+    for move in move_list:
+        if (('x' in str(move)) or ('+' in str(move)) or ('#' in str(move))):
+            sorted_list.insert(0,str(move))
+        else:
+            sorted_list.insert(len(sorted_list),str(move))
+    
+    return sorted_list
+
 def piece_location(board):
     """
     Returns two dictionary white piece, black_piece of format --> {'Piece_type':Square}
@@ -58,3 +75,12 @@ def piece_location(board):
             black_pieces[val.symbol()] = SQUARE_FROM_INT[key+1]
     # print(f'white dictionary \n{white_pieces}\nblack dictionary \n{black_pieces}\n')
     return white_pieces,black_pieces
+
+
+
+print('--------------------------------------------------------')
+# newboard = chess.Board('r1b1k2r/ppp1pppp/5n2/2bp4/2B1Pnq1/1R3N1P/PPPP1PP1/RNBQ2K1 w Qkq - 0 1')
+newboard = chess.Board('3rk3/5p2/8/8/8/1B6/5Q2/K7 w - - 0 1')
+print(fast_legal_sort(newboard))
+print(LegalSort(newboard))
+
