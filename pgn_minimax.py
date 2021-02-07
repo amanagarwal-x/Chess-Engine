@@ -1,5 +1,6 @@
 import chess
 import math
+import random
 from Aman.main import *
 from Mihir.mihirr import *
 from evalFunctions import *
@@ -60,6 +61,9 @@ def findBestMove(board):
 
 
 def game():
+    f = open("Database\pgn_database.txt","r")
+    content = f.read()
+    f.close()
     cur_pgn=""
     start=1
     board = chess.Board() 
@@ -72,15 +76,32 @@ def game():
         if(board.is_stalemate()):
             print('-----------------STALEMATE-----------------')
             break  
-        move = str(findBestMove(board))
-        cur_pgn+= str(start) + ". " + convert_to_standard(board,str(move)) #Adding white move to current pgn in standard pgn notation
-        print(f"Computer's Move: {move}")
-        print(f"PGN : {cur_pgn}")
-        board.push_san(move)
-        start+=1
-        print()
-        print(board, "\n")
-
+        
+        #FIRST MOVE ----------
+        if(start==1):
+            opening_moves = ["e4","d4","b3","g3","Nf3","c4"]
+            move = random.choice(opening_moves)
+            board.push_san(f"{move}")
+            print(f"Computer's Move: {move}")
+            cur_pgn+= "1. " + move
+            print(f"PGN : {cur_pgn}")
+            start+=1
+            print()
+            print(board, "\n")
+        
+        if(start%2!=0):
+            next_move = find_from_pgn(content,cur_pgn)
+            print(f'next move from database : {next_move}\n')
+            
+            movee = str(findBestMove(board))
+            print(f"Computer's Move: {movee}")
+            new_notation_move = convert_to_standard(board,str(movee))
+            board.push_san(movee)
+            cur_pgn+= str(start) + ". " + new_notation_move  #Adding white move to current pgn in standard pgn notation
+            print(f"PGN : {cur_pgn}")
+            start+=1
+            print()
+            print(board, "\n")
         while(1):
             if(board.is_checkmate()):
                 print('-----------------GAME OVER-----------------')
