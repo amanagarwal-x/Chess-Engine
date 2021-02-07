@@ -65,7 +65,8 @@ def game():
     content = f.read()
     f.close()
     cur_pgn=""
-    start=1
+    pgn_move_no=1
+    move_no=1
     board = chess.Board() 
     print()
     print(board, "\n")
@@ -78,52 +79,55 @@ def game():
             break  
         
         #FIRST MOVE ----------
-        if(start==1):
+        if(move_no==1):
             opening_moves = ["e4","d4","b3","g3","Nf3","c4"]
             move = random.choice(opening_moves)
             board.push_san(f"{move}")
             print(f"Computer's Move: {move}")
             cur_pgn+= "1. " + move
             print(f"PGN : {cur_pgn}")
-            start+=1
+            pgn_move_no+=1
+            move_no+=1
             print()
             print(board, "\n")
         
-        if(start%2!=0):
+        if(move_no%2!=0):
             next_move = find_from_pgn(content,cur_pgn)
-            print(f'next move from database : {next_move}\n')
+            print(f"next move from database : {next_move} \n")
             
             movee = str(findBestMove(board))
-            print(f"Computer's Move: {movee}")
+            print(f"Computer's Move: {convert_to_standard(board,movee)}")
             new_notation_move = convert_to_standard(board,str(movee))
             board.push_san(movee)
-            cur_pgn+= str(start) + ". " + new_notation_move  #Adding white move to current pgn in standard pgn notation
+            cur_pgn+= str(pgn_move_no) + ". " + new_notation_move  #Adding white move to current pgn in standard pgn notation
             print(f"PGN : {cur_pgn}")
-            start+=1
+            pgn_move_no+=1
+            move_no+=1
             print()
             print(board, "\n")
-        while(1):
-            if(board.is_checkmate()):
-                print('-----------------GAME OVER-----------------')
-                break
-            if(board.is_stalemate()):
-                print('-----------------STALEMATE-----------------')
-                break   
-            try:
-                print("Possible Moves: ", board.legal_moves)
-                blackMove = input("Enter your move: ")
-                cur_pgn+=" " + blackMove + " "
-                print(f"PGN : {cur_pgn}")
-                start+=1
-                if blackMove == 'q':                                                    # Press q to quit game
-                    return
+        else:
+            while(1):
+                if(board.is_checkmate()):
+                    print('-----------------GAME OVER-----------------')
+                    break
+                if(board.is_stalemate()):
+                    print('-----------------STALEMATE-----------------')
+                    break   
+                try:
+                    print("Possible Moves: ", board.legal_moves)
+                    blackMove = input("Enter your move: ")
+                    cur_pgn+=" " + blackMove + " "
+                    print(f"PGN : {cur_pgn}")
+                    move_no+=1
+                    if blackMove == 'q':                                                    # Press q to quit game
+                        return
 
-                board.push_san(blackMove)
-                print()
-                print(board, "\n")
-                break
-            except:
-                print("\n\nINVALID MOVE\n\n")
+                    board.push_san(blackMove)
+                    print()
+                    print(board, "\n")
+                    break
+                except:
+                    print("\n\nINVALID MOVE\n\n")
 
 game()
 

@@ -100,7 +100,7 @@ def find_from_pgn(data,current_pgn):
     if(index==-1):
         return ""
     else:
-        move = data[index+len(current_pgn)+4:index+len(current_pgn)+10]
+        move = data[index+len(current_pgn)+3:index+len(current_pgn)+10]
         if ' ' in move:
             sep = move.split(' ')
             move = sep[0]
@@ -109,12 +109,16 @@ def find_from_pgn(data,current_pgn):
 
 
 
-''''
+'''
 #---------------------------TESTING FOR PGN-----------------------
 # f = open("Database\pgn_database.txt","r")
 # content = f.read()
 # f.close()
-# cur_pgn5 = "1. d4 d5 2. c4 c6 3. Nc3 Nf6 4. Nf3 a6 5. Bg5 Ne4" #5 moves // ans e3
+#cur_pgn1 = "1. d4 Nf6"
+# cur_pgn2 = "1. a3 e5 2. e3 d6" #2 moves //ans d4
+# cur_pgn3 = "1. Nf3 Nf6 2. c4 g6 3. g3 c6" #3 moves //ans - Bg2
+# cur_pgn4 = "1. c4 c6 2. d4 d5 3. Nc3 Nf6 4. e3 a6" #4 moves //ans - Nf3
+# cur_pgn5 = "1. d4 d5 2. c4 c6 3. Nc3 Nf6 4. Nf3 a6 5. Bg5 Ne4" #5 moves // ans - e3
 # cur_pgn6 = "1. d4 c6 2. e4 d5 3. Nd2 dxe4 4. Nxe4 Nf6 5. Ng3 e5 6. dxe5 Qxd1+" #6 moves// ans- Kxd1
 # cur_pgn7 = "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. N1e2 e6" #7 moves // ans - Nf4
 # cur_pgn8 = "1. e4 c5 2. Nf3 a6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 d6 6. Bg5 e6 7. Qd2 Be7 8. f4 h6" #8 moves // ans- Bxf6
@@ -126,4 +130,5 @@ def find_from_pgn(data,current_pgn):
 # print(find_from_pgn(content,cur_pgn7))
 # print(find_from_pgn(content,cur_pgn8)) 
 # print(find_from_pgn(content,cur_pgn9)) #!does not work if no of completed moves>8
+# print(find_from_pgn(content,cur_pgn2))
 '''
