@@ -93,7 +93,7 @@ def game():
         
         if(move_no%2!=0):
             next_move = find_from_pgn(content,cur_pgn)
-            if(move_no<9 and next_move!=""):
+            if(next_move!=""):
                 print(f"Computer's Move: {next_move}")
                 board.push_san(next_move)
                 cur_pgn+=str(pgn_move_no)+". "+ next_move
