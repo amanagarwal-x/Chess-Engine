@@ -34,24 +34,6 @@ def LegalSort(board):
 
     return SortedLegalMoves
 
-
-def fast_legal_sort(board):
-    move_set = set()
-    sannns="initial"
-    for move in board.legal_moves:
-        sannns = " ".join(board.san(move) for move in board.legal_moves)
-        move_set.add(str(sannns))
-    move_list = sannns.split(" ")
-    sorted_list=[]
-    # print(f'move set is {move_list} and len is {len(move_list)}')
-    for move in move_list:
-        if (('x' in str(move)) or ('+' in str(move)) or ('#' in str(move))):
-            sorted_list.insert(0,str(move))
-        else:
-            sorted_list.insert(len(sorted_list),str(move))
-    
-    return sorted_list
-
 def piece_location(board):
     """
     Returns two dictionary white piece, black_piece of format --> {'Piece_type':Square}
@@ -76,11 +58,83 @@ def piece_location(board):
     # print(f'white dictionary \n{white_pieces}\nblack dictionary \n{black_pieces}\n')
     return white_pieces,black_pieces
 
+def convert_to_standard(board,old_move):
+    """
+    takes input as old notation (e2e4) and converts to standard notation (e4)
+    returns - standard notation form of given move in old notation
+    """
+    startt = old_move[:2].upper()
+    endd = old_move[2:].upper()
+    conv = chess.Move(from_square=squaresdict[startt],to_square=squaresdict[endd])
+    move_new = "".join(board.san(conv))
+
+    return move_new
+
+def fast_legal_sort(board):
+    #? need to check this in minimax
+    move_set = set()
+    for i in board.legal_moves:
+        move_set.add(convert_to_standard(board,str(i)))
+    print(move_set)
+
+    sorted_list = []
+    for move in move_set:
+        if '#' in move:
+            sorted_list.append(move)
+    for move in move_set:
+        if (('#' not in move) and ('+' in move or 'x' in move)):
+            sorted_list.append(move)
+        elif('#' not in move and '+' not in move and 'x' not in move):
+            sorted_list.append(move)
+    # print(f'\nold list {move_set}\nnew list {sorted_list}\n')
+    return sorted_list
 
 
-print('--------------------------------------------------------')
-# newboard = chess.Board('r1b1k2r/ppp1pppp/5n2/2bp4/2B1Pnq1/1R3N1P/PPPP1PP1/RNBQ2K1 w Qkq - 0 1')
-newboard = chess.Board('3rk3/5p2/8/8/8/1B6/5Q2/K7 w - - 0 1')
-print(fast_legal_sort(newboard))
-print(LegalSort(newboard))
+def find_from_pgn(data,current_pgn):
+    """
+    data - content of pgn file from file read
+    current_pgn - running pgn of the game
+    returns - next move according to given database in string form in standard notation (e4 and not e2e4)
+    """
+    index = data.find(current_pgn)
+    if(index==-1):
+        return ""
+    else:
+        move = data[index+len(current_pgn)+3:index+len(current_pgn)+11]
+        if ' ' in move:
+            sep = move.split(' ')
+            move = sep[0]
+            if move == '':
+                move = sep[1]
+        return move
 
+
+
+
+'''
+#---------------------------TESTING FOR PGN-----------------------
+# f = open("Database\pgn_database.txt","r")
+# content = f.read()
+# f.close()
+# cur_pgn1 = "1. d4 Nf6"
+# cur_pgn2 = "1. a3 e5 2. e3 d6" #2 moves //ans d4
+# cur_pgn3 = "1. Nf3 Nf6 2. c4 g6 3. g3 c6" #3 moves //ans - Bg2
+# cur_pgn4 = "1. c4 c6 2. d4 d5 3. Nc3 Nf6 4. e3 a6" #4 moves //ans - Nf3
+# cur_pgn5 = "1. d4 d5 2. c4 c6 3. Nc3 Nf6 4. Nf3 a6 5. Bg5 Ne4" #5 moves // ans - e3
+# cur_pgn6 = "1. d4 c6 2. e4 d5 3. Nd2 dxe4 4. Nxe4 Nf6 5. Ng3 e5 6. dxe5 Qxd1+" #6 moves// ans- Kxd1
+# cur_pgn7 = "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. N1e2 e6" #7 moves // ans - Nf4
+# cur_pgn8 = "1. e4 c5 2. Nf3 a6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 d6 6. Bg5 e6 7. Qd2 Be7 8. f4 h6" #8 moves // ans- Bxf6
+# cur_pgn9 = "1. Nf3 g6 2. e3 Bg7 3. c4 c5 4. Nc3 Nc6 5. b3 Nf6 6. Bb2 O-O 7. Be2 a6 8. O-O Rb8 9. d4 d6" #9 moves // ans - dxc5
+# cur_pgn92 = "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. N1e2 e6 8. Nf4 Bh7 9. Bc4 Nf6 " #7 moves // ans - O-O
+
+
+# print(find_from_pgn(content,cur_pgn1))
+# print(find_from_pgn(content,cur_pgn2))
+# print(find_from_pgn(content,cur_pgn3))
+# print(find_from_pgn(content,cur_pgn4))
+# print(find_from_pgn(content,cur_pgn5))
+# print(find_from_pgn(content,cur_pgn6))
+# print(find_from_pgn(content,cur_pgn7))
+# print(find_from_pgn(content,cur_pgn8)) 
+# print(find_from_pgn(content,cur_pgn9)) 
+'''
