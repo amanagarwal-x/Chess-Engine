@@ -108,6 +108,22 @@ def find_from_pgn(data,current_pgn):
                 move = sep[1]
         return move
 
+def board_to_dict_converter(boardd):
+    '''
+    gives dict which shows location of all pieces, key - square ('A1'), value-piece('bR') 
+    '''
+
+    dictt ={}
+    for square in squaresdict:
+        dictt[square] = '--' 
+    mmap={'N':'wN','n':'bN','P':'wp','p':'bp','R':'wR','r':'bR','Q':'wQ','q':'bQ','K':'wK','k':'bK','B':'wB','b':'bB','None':'--'}
+
+
+    for squares in dictt:
+        cur_piece = str(boardd.piece_at(squaresdict[squares]))
+        dictt[squares]=mmap[cur_piece]
+    
+    return dictt
 
 
 
