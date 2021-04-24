@@ -98,7 +98,29 @@ def gui():
     print(play_move(move_no, 59 , board))
 
     move_no = move_no+1
-    print(play_move(move_no, "d7d5", board))
+    # print(play_move(move_no, "d7d5", board))
     # print(board)    
-
+    pp.pprint(boardList)
+    # board_dict = play_move(move_no, "d7d5", board)
+    # for square in board_dict:
+    #     boardList[filesToCols[square[0].lower()]][ranksToRows[square[1]]] = board_dict[square]
+    # boardList_T =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
+    # pp.pprint(boardList_T)
 # gui()
+
+
+
+
+boardList=[
+    ["bR","bN","bB","bQ","bK","bB","bN","bR"],
+    ["bp","bp","bp","bp","bp","bp","bp","bp"],
+    ["--","--","--","--","--","--","--","--"],
+    ["--","--","--","--","--","--","--","--"],
+    ["--","--","--","--","--","--","--","--"],
+    ["--","--","--","--","--","--","--","--"],
+    ["wp","wp","wp","wp","wp","wp","wp","wp"],
+    ["wR","wN","wB","wQ","wK","wB","wN","wR"]
+]
+
+ranksToRows = {"1":7, "2":6, "3":5, "4":4, "5":3, "6":2, "7":1, "8":0 }
+filesToCols = {"a":0 ,"b":1 , "c":2, "d":3, "e":4, "f":5, "g":6,"h":7}

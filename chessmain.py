@@ -1,5 +1,9 @@
 import pygame as p
 import chessengine
+import chess
+from main import Game, play_move
+import pprint
+pp=pprint.PrettyPrinter()
 
 WIDTH=HEIGHT=512
 DIMENSION=8
@@ -10,7 +14,7 @@ IMAGES={}
 def loadImages():
         pieces=['wp','wR','wN','wB','wQ','wK','bp','bR','bN','bB','bQ','bK']
         for piece in pieces:
-            IMAGES[piece]=p.transform.scale(p.image.load("C:/Users\Ameya Godbole\Desktop\cpp\PythonP\Chess\images/" + piece + ".png"),(SQ_SIZE, SQ_SIZE))
+            IMAGES[piece]=p.transform.scale(p.image.load("Mrunmai/Images/" + piece + ".png"),(SQ_SIZE, SQ_SIZE))
        
 def main():
     p.init()
@@ -22,6 +26,8 @@ def main():
     running =True
     sqSelected = ()
     playerClicks = []
+    move_no = 1
+    board = chess.Board() 
     while running:
         for e in p.event.get():
             if e.type == p.QUIT:
@@ -36,13 +42,29 @@ def main():
                 else:
                     sqSelected = (row,col)
                     playerClicks.append(sqSelected)
-                if len(playerClicks) == 2:
+                if len(playerClicks) == 2 and move_no%2 == 0:
                     move =chessengine.Move(playerClicks[0], playerClicks[1], gs.board)
                     print(move.getChessNotation())
-                    gs.makeMove(move)
+                    board_dict = play_move(move_no, move.getChessNotation(), board)
+                    boardList = gs.board
+                    for square in board_dict:
+                        boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
+                    gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
+                    pp.pprint(gs.board)
+                    move_no = move_no + 1
+
                     sqSelected = ()
                     playerClicks=[]
                      
+            elif move_no%2 != 0:
+                board_dict = play_move(move_no, "454", board)
+                boardList = gs.board
+                for square in board_dict:
+                    boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
+                gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
+                pp.pprint(gs.board)
+                move_no = move_no + 1
+
         drawGameState(screen,gs)
         clock.tick(MAX_FPS)
         p.display.flip()
