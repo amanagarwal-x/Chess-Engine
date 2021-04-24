@@ -5,6 +5,22 @@ import pprint
 pp=pprint.PrettyPrinter()
 
 
+def give_high(board, sq):
+    '''
+    give input square in string form (in capital eg-E4)
+    returns list of legal moves from that square
+
+    eg - give_high('E2') ==> ['E3','E4']
+    '''
+    leg_list=[]
+    for square in squaresdict:
+        try:
+            cur_square=str(board.find_move(from_square=squaresdict[sq] ,to_square=squaresdict[square]))[2:].upper()
+            leg_list.append(cur_square)
+        except ValueError:
+            pass
+    return leg_list
+
 class Game:
     f = open("./Database/pgn_database.txt","r")
     content = f.read()
@@ -48,26 +64,9 @@ class Game:
                 return 0
 
             blackMove = black_move
-            Game.cur_pgn+=" " + convert_to_standard(board, blackMove) + " "
+            if black_move[2:].upper() in give_high(board,black_move[:2].upper()) :
+                Game.cur_pgn+=" " + convert_to_standard(board, blackMove) + " "
             board.push_san(blackMove)
-            
-
-def give_high(sq):
-    '''
-    give input square in string form (in capital eg-E4)
-    returns list of legal moves from that square
-
-    eg - give_high('E2') ==> ['E3','E4']
-    '''
-    leg_list=[]
-    for square in squaresdict:
-        try:
-            cur_square=str(neww.find_move(from_square=squaresdict[sq] ,to_square=squaresdict[square]))[2:].upper()
-            leg_list.append(cur_square)
-        except ValueError:
-            pass
-    return leg_list
-
 
 
 def play_move(move_no, black_move, board):

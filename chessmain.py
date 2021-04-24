@@ -1,6 +1,7 @@
 import pygame as p
 import chessengine
 import chess
+from playsound import playsound
 from main import Game, play_move
 import pprint
 pp=pprint.PrettyPrinter()
@@ -45,13 +46,18 @@ def main():
                 if len(playerClicks) == 2 and move_no%2 == 0:
                     move =chessengine.Move(playerClicks[0], playerClicks[1], gs.board)
                     print(move.getChessNotation())
-                    board_dict = play_move(move_no, move.getChessNotation(), board)
-                    boardList = gs.board
-                    for square in board_dict:
-                        boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
-                    gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
-                    pp.pprint(gs.board)
-                    move_no = move_no + 1
+                    try:
+                        board_dict = play_move(move_no, move.getChessNotation(), board)
+                        #For CheckMate condition, board_dict == "CM"
+                        boardList = gs.board
+                        for square in board_dict:
+                            boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
+                        gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
+                        pp.pprint(gs.board)
+                        playsound("./sounds/attack.wav")
+                        move_no = move_no + 1
+                    except ValueError:
+                        print("Illegal Move")
 
                     sqSelected = ()
                     playerClicks=[]
@@ -63,6 +69,7 @@ def main():
                     boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
                 gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
                 pp.pprint(gs.board)
+                playsound("./sounds/attack.wav")
                 move_no = move_no + 1
 
         drawGameState(screen,gs)
