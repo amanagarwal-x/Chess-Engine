@@ -1,6 +1,7 @@
-from backend import miniMax, findBestMove
+from backend_search import miniMax, findBestMove
 from utility_funcs import convert_to_standard, find_from_pgn, board_to_dict_converter, squaresdict
 import random, chess
+import time
 import pprint
 pp=pprint.PrettyPrinter()
 
@@ -22,7 +23,7 @@ def give_high(board, sq):
     return leg_list
 
 class Game:
-    f = open("./Database/pgn_database.txt","r")
+    f = open("./Assets/Database/pgn_database.txt","r")
     content = f.read()
     f.close()
     cur_pgn=""
@@ -49,6 +50,7 @@ class Game:
             Game.pgn_move_no = Game.pgn_move_no + 1
             if(next_move!=""):
                 Game.cur_pgn+=str(Game.pgn_move_no)+". "+ next_move
+                time.sleep(1.5)                                     #DELAY IN GAMEPLAY WHEN DATABASE HIT
                 board.push_san(next_move)
             
             else:

@@ -61,7 +61,7 @@ def findBestMove(board):
 
 
 def game():
-    f = open("./Database/pgn_database.txt","r")
+    f = open("./Assets/Database/pgn_database.txt","r")
     content = f.read()
     f.close()
     cur_pgn=""
