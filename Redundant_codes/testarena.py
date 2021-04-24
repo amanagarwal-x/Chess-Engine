@@ -1,5 +1,3 @@
-from Aman.main import *
-from Mihir.mihirr import *
 from utility_funcs import *
 import chess
 import pprint
@@ -120,6 +118,8 @@ for fruit in fruits:
 
 
 
+from count_attack import upper_square
+a=squaresdict.values()
 
 
 

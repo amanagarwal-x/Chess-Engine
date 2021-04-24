@@ -1,8 +1,8 @@
 import chess
 import math
 import random
-from Aman.main import *
-from Mihir.mihirr import *
+# from Aman.main import *
+# from Mihir.mihirr import *
 from evalFunctions import *
 from utility_funcs import *
 maximumScore = 1000^3
@@ -93,26 +93,18 @@ def game():
         
         if(move_no%2!=0):
             next_move = find_from_pgn(content,cur_pgn)
-            if(next_move!=""):
-                print(f"Computer's Move: {next_move}")
-                board.push_san(next_move)
-                cur_pgn+=str(pgn_move_no)+". "+ next_move
-                print(f"PGN : {cur_pgn}")
-                pgn_move_no+=1
-                move_no+=1
-                print(f"\n{board}\n")
-
-            # print(f"next move from database : {next_move} \n")
-            else:
-                movee = str(findBestMove(board))
-                print(f"Computer's Move: {convert_to_standard(board,movee)}")
-                new_notation_move = convert_to_standard(board,str(movee))
-                board.push_san(movee)
-                cur_pgn+= str(pgn_move_no) + ". " + new_notation_move  #Adding white move to current pgn in standard pgn notation
-                print(f"PGN : {cur_pgn}")
-                pgn_move_no+=1
-                move_no+=1
-                print(f"\n{board}\n")
+            print(f"next move from database : {next_move} \n")
+            
+            movee = str(findBestMove(board))
+            print(f"Computer's Move: {convert_to_standard(board,movee)}")
+            new_notation_move = convert_to_standard(board,str(movee))
+            board.push_san(movee)
+            cur_pgn+= str(pgn_move_no) + ". " + new_notation_move  #Adding white move to current pgn in standard pgn notation
+            print(f"PGN : {cur_pgn}")
+            pgn_move_no+=1
+            move_no+=1
+            print()
+            print(board, "\n")
         else:
             while(1):
                 if(board.is_checkmate()):
@@ -131,10 +123,11 @@ def game():
                         return
 
                     board.push_san(blackMove)
-                    print(f"\n{board}\n")
+                    print()
+                    print(board, "\n")
                     break
                 except:
-                    print("\n\nINVALID MOVE!!!\n\n")
+                    print("\n\nINVALID MOVE\n\n")
 
 game()
 

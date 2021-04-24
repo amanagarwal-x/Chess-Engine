@@ -1,7 +1,6 @@
 import chess
-from count_attack import *
 from utility_funcs import *
-#
+
 def eval_centerControl(fen):
         
     ''' Evaluation function to return score for centre square control
@@ -69,7 +68,6 @@ def eval_materialCount(fen):
     return total_score
 
 #
-
 def eval_countAttack(fen):
     '''
     counts no of attackers of white - cntwhite
@@ -84,7 +82,7 @@ def eval_countAttack(fen):
     white_control = {}
     black_control = {}
     i=0
-    for sq in upper_square:
+    for sq in squaresdict.values():
         white_control[upper_square_string[i]] = countsqset(
             cur_pos.attackers(color=True, square=sq))
         black_control[upper_square_string[i]] = countsqset(
@@ -113,8 +111,9 @@ def eval_countAttack(fen):
 
     return scaled_diff*(abs(diff)/diff)
 
+#
 def eval_PiecePosition(fen):
-    cur_board = board(f'{fen}')
+    cur_board = chess.Board(f'{fen}')
     white_pieces,black_pieces = piece_location(cur_board)
     print(f'white dict \n{white_pieces}\nblack dict \n{black_pieces}\n')
     #TODO : Positions of all pawns,rooks,bishops,knights is not added in map
@@ -131,6 +130,7 @@ def evaluate(fen):
     # return (eval_centerControl(fen) + eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen))
     return (eval_materialCount(fen) + eval_kingCheck(fen) + eval_countAttack(fen) + eval_isCheckMate(fen))
 
+#
 def debugscores(fen):
     print(f'score of materialcount : {eval_materialCount(fen)}')
     print(f'score of centercount : {eval_centerControl(fen)}')

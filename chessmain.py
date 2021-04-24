@@ -54,7 +54,7 @@ def main():
                             boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
                         gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
                         pp.pprint(gs.board)
-                        playsound("./sounds/attack.wav")
+                        playsound("./sounds/move_sound.mp3")
                         move_no = move_no + 1
                     except ValueError:
                         print("Illegal Move")
@@ -69,7 +69,7 @@ def main():
                     boardList[chessengine.Move.filesToCols[square[0].lower()]][chessengine.Move.ranksToRows[square[1]]] = board_dict[square]
                 gs.board =[[row[i] for row in boardList] for i in range(len(boardList[0]))]
                 pp.pprint(gs.board)
-                playsound("./sounds/attack.wav")
+                playsound("./sounds/move_sound.mp3")
                 move_no = move_no + 1
 
         drawGameState(screen,gs)

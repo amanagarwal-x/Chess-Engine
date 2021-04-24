@@ -1,16 +1,15 @@
 import chess
-import math
-from Aman.main import *
-from Mihir.mihirr import *
+# from Aman.main import *
+# from Mihir.mihirr import *
 from evalFunctions import *
-from utility_funcs import *
+
 maximumScore = 1000^3
 minimumScore = -1000^3
 maxDepth = 3
 
-alppha = -math.inf
-betta = math.inf
-def miniMax(board, depth,alpha,beta, isMax):
+
+
+def miniMax(board, depth, isMax):
     score = evaluate(board.fen())
 
     if score >= maximumScore or score <= minimumScore or depth == maxDepth:
@@ -18,39 +17,29 @@ def miniMax(board, depth,alpha,beta, isMax):
 
     if isMax:
         best = -1000
-        SortedList = LegalSort(board)
-        for i in SortedList:
+        for i in board.legal_moves:
             board.push_san(str(i))
-            best = max( best, miniMax(board, depth+1,alpha,beta, not isMax))
+            best = max( best, miniMax(board, depth+1, not isMax))
             board.pop()
-            alpha=max(alpha,best)
-
-            if(beta<=alpha):
-                return best
         return best
 
     else:
         best = 1000
-        SortedList = LegalSort(board)
-        for i in SortedList:
+        for i in board.legal_moves:
             board.push_san(str(i))
-            best = min( best, miniMax(board, depth+1,alpha,beta, not isMax))
+            best = min( best, miniMax(board, depth+1, not isMax))
             board.pop()
-            beta=min(beta,best)
-            if(beta<=alpha):
-                return best
         return best    
 
 def findBestMove(board):
     bestVal = -1000
     moveVal = 0
     bestMove = ""
-    SortedList = LegalSort(board)
-    for i in SortedList:
+    for i in board.legal_moves:
         board.push_san(str(i))
-        moveVal = miniMax(board, 0,alppha,betta, False)
+        moveVal = miniMax(board, 0, False)
     
-        if moveVal >= bestVal:
+        if moveVal > bestVal:
             bestVal = moveVal
             bestMove = board.peek()
             # print ("#########", board.peek())
@@ -63,25 +52,13 @@ def game():
     board = chess.Board() 
     print()
     print(board, "\n")
-    while(1):
-        if(board.is_checkmate()):
-            print('-----------------GAME OVER-----------------')
-            break
-        if(board.is_stalemate()):
-            print('-----------------STALEMATE-----------------')
-            break        
+    while(1):  
         print("Computer's Move:")
         board.push_san(str(findBestMove(board)))
         print()
         print(board, "\n")
 
         while(1):
-            if(board.is_checkmate()):
-                print('-----------------GAME OVER-----------------')
-                break
-            if(board.is_stalemate()):
-                print('-----------------STALEMATE-----------------')
-                break   
             try:
                 print("Possible Moves: ", board.legal_moves)
                 blackMove = input("Enter your move: ")
