@@ -36,7 +36,7 @@ After you have installed all the dependencies, you can go ahead and run the ches
 <!-- CONTACT -->
 ## Contact
 
-[Mihir Shah](https://linkedin.com/in/mihir-shah) - mdshah930@gmail.com \
+[Mihir Shah](https://www.linkedin.com/in/mihir-shah-/) - mdshah930@gmail.com \
 [Aman Agarwal](https://www.linkedin.com/in/aman-agarwal-ba7946175) - amanagarwal@gmail.com \
 [Mrunmai Bhole](https://www.linkedin.com/in/mvbhole) - mrunmaibhole@gmail.com \
 [Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com 
