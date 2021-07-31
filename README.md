@@ -37,9 +37,9 @@ After you have installed all the dependencies, you can go ahead and run the ches
 ## Contact
 
 [Mihir Shah](linkedin.com/in/mihir-shah) - mdshah930@gmail.com \
-[Aman Agarwal](https://www.linkedin.com/in/aman-agarwal-ba7946175) - amanagarwal \
+[Aman Agarwal](https://www.linkedin.com/in/aman-agarwal-ba7946175) - amanagarwal@gmail.com \
 [Mrunmai Bhole](www.linkedin.com/in/mvbhole) - mrunmaibhole@gmail.com \
-[Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com \
+[Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com 
 
 Project Link: [https://github.com/amanagarwal-x/Chess-Engine](https://github.com/amanagarwal-x/Chess-Engine)
 
