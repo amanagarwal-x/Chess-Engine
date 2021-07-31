@@ -10,7 +10,7 @@ We have used [Py-game](https://www.pygame.org/docs/) for a user-friendly GUI.\
 We have also used [Lichess-ELite-Database](https://lichess.org/team/lichess-elite-database) which served as the back-end database.\
 The main library which handles the chess board is [chess](https://python-chess.readthedocs.io/en/latest/).
 
-###Installation
+### Installation
 1. Clone the repo
    ```sh
    git clone https://github.com/amanagarwal-x/Chess-Engine
