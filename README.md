@@ -2,13 +2,13 @@
 
 This is a fully functional chess engine completely made with Python powered by Machine Learning and Artificial Intelligence at its backend.
 It uses [Mini-max](https://en.wikipedia.org/wiki/Minimax) algorithm for predicting the moves.
-We have also implemented optimization techniques like
--[Quiscence Search](https://en.wikipedia.org/wiki/Quiescence_search)
--[Transposition Table](https://www.chessprogramming.org/Transposition_Table)
--[Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
-We have used [Py-game](https://www.pygame.org/docs/) for a user-friendly GUI.
-We have also used [Lichess-ELite-Database](https://lichess.org/team/lichess-elite-database) which served as the back-end database.
-The main library which handles the chess board is [chess](https://python-chess.readthedocs.io/en/latest/).
+We have also implemented optimization techniques like\
+-[Quiscence Search](https://en.wikipedia.org/wiki/Quiescence_search)\
+-[Transposition Table](https://www.chessprogramming.org/Transposition_Table)\
+-[Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)\
+We have used [Py-game](https://www.pygame.org/docs/) for a user-friendly GUI.\
+We have also used [Lichess-ELite-Database](https://lichess.org/team/lichess-elite-database) which served as the back-end database.\
+The main library which handles the chess board is [chess](https://python-chess.readthedocs.io/en/latest/).\
 
 ###Installation
 1. Clone the repo
