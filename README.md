@@ -15,7 +15,7 @@ The main library which handles the chess board is [chess](https://python-chess.r
    ```sh
    git clone https://github.com/amanagarwal-x/Chess-Engine
    ```
-2. Install NPM packages
+2. Install dependencies
    ```sh
    pip install chess
    pip install pygame
@@ -36,10 +36,10 @@ After you have installed all the dependencies, you can go ahead and run the ches
 <!-- CONTACT -->
 ## Contact
 
-[Mihir Shah](linkedin.com/in/mihir-shah) - mdshah930@gmail.com
-[Aman Agarwal](https://www.linkedin.com/in/aman-agarwal-ba7946175) - amanagarwal
-[Mrunmai Bhole](www.linkedin.com/in/mvbhole) - mrunmaibhole@gmail.com
-[Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com
+[Mihir Shah](linkedin.com/in/mihir-shah) - mdshah930@gmail.com \
+[Aman Agarwal](https://www.linkedin.com/in/aman-agarwal-ba7946175) - amanagarwal \
+[Mrunmai Bhole](www.linkedin.com/in/mvbhole) - mrunmaibhole@gmail.com \
+[Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com \
 
 Project Link: [https://github.com/amanagarwal-x/Chess-Engine](https://github.com/amanagarwal-x/Chess-Engine)
 
