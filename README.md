@@ -1,6 +1,6 @@
 # Chess-Engine
 
-This is a fully functional chess engine completely made with Python powered by Machine Learning and Artificial Intelligence at its backend.
+This is a fully functional chess engine completely made with Python powered by Artificial Intelligence at its backend.
 It uses [Mini-max](https://en.wikipedia.org/wiki/Minimax) algorithm for predicting the moves.
 We have also implemented optimization techniques like\
 -[Quiscence Search](https://en.wikipedia.org/wiki/Quiescence_search)\
