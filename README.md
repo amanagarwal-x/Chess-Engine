@@ -41,5 +41,5 @@ After you have installed all the dependencies, you can go ahead and run the ches
 [Mrunmai Bhole](https://www.linkedin.com/in/mvbhole) - mrunmaibhole@gmail.com \
 [Ameya Godbole](https://www.linkedin.com/in/ameya-godbole/) - ameya.godbole14@gmail.com 
 
-Project Link: [https://github.com/amanagarwal-x/Chess-Engine] (https://github.com/amanagarwal-x/Chess-Engine)
+Project Link: [https://github.com/amanagarwal-x/Chess-Engine](https://github.com/amanagarwal-x/Chess-Engine)
 
